@@ -1,12 +1,27 @@
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
+@font-face {
+    font-family: "Inter Web";
+    src: url("../fonts/Inter-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
 
+@font-face {
+    font-family: "Inter Web";
+    src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+    font-weight: 700;
+}
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
-:root {}
+:root {
+    --global-color-alpha-light: #4F95FF;
+    --global-color-alpha: #3385FF;
+    --global-color-alpha-dark: #2E77E6;
+    accent-color: #3385FF;
+}
 
 /* CSS variables here */
 
@@ -23,12 +38,12 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: "Inter Web", Helvetica, arial, sans-serif;
+    color: #20223a;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: #f5f6fa;
 }
 
 *,
@@ -44,14 +59,8 @@ html {
 * Customize the background color to match your design.
 */
 
-::-moz-selection {
-    background: HotPink;
-    color: white;
-    text-shadow: none;
-}
-
 ::selection {
-    background: HotPink;
+    background: #2E77E6;
     color: white;
     text-shadow: none;
 }
@@ -156,20 +165,26 @@ hr {
 }
 
 a {
-    color: HotPink;
+    color: #3385FF ;
     transition: all .1s ease-in-out;
+    text-decoration: none;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: var(--global-color-alpha);
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: var(--global-color-alpha-light);
 }
 
+
+label,
+input{
+    display: block;
+}
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
@@ -422,6 +437,31 @@ a:focus {
     -webkit-appearance: none;
 }
 
+.c-button {
+    color: white;
+    font-weight: 700;
+    background-color: #3385FF;
+    border: 1px solid #2E77E6;
+    border-radius: 3px;
+    line-height: 24px;
+    padding: 11px 16px;
+    width: 100%;
+    outline: none
+}
+
+.c-button:hover{
+    background-color: #4F95FF;
+}
+
+.c-button:focus{
+    /* background-color: #3385FF; */
+    box-shadow: 0 0 0 3px rgba(51, 133, 255, .3);
+}
+
+.c-button:active{
+    background-color: #2E77E6;
+    box-shadow: none;
+}
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
@@ -431,12 +471,63 @@ a:focus {
     ---
     Website main logo
 */
+.c-logo{
+    height: 24px;
+    display: flex;
+    justify-content: center;
+}
 
+.c-logo__svg{
+    height:  100%;
+}
+
+.c-logo__path--1{
+    fill: #20223A;
+}
+.c-logo__path--2{
+    fill: #3385FF;
+}
+.c-logo__path--3{
+    fill: #1B4186;
+}
 /*
     Component: Card
     ---
     Card with box shadow
 */
+
+.c-card {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .05);
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .05);
+}
+
+.c-card__body {
+    padding: 48px ;
+}
+
+.c-card__title {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 48px 8px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #20223A;
+}
+
+.c-card__footer {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #E2E3E7;
+}
+
+.c-card__footer > p{
+    padding: 24px 8px 0;
+    color: #757787;
+}
+
 
 /*
     Component: Forms
@@ -450,9 +541,23 @@ a:focus {
     Class to put on all input="text" like form inputs
 */
 
-.c-input {}
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border: 1px solid #e2e3e7;
+    border-radius: 3px;   
+    font-family: "Inter Web", sans-serif;
+    line-height: 24px;
+    padding: 11px 16px;
+    outline: none;
+}
 
-.c-input:focus {}
+.c-input:focus {
+    box-shadow: 0 0 0 3px rgba(51, 133, 255, .3);
+    border-color: #3385FF;
+}
 
 /*
     Component: Label
@@ -460,11 +565,29 @@ a:focus {
     Class to put on all form labels
 */
 
-.c-label {}
+.c-label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color:  #606274;
+
+}
 
 /* If a input is focused within the form-field class change te color of the label */
 
+.c-form-field--option {
+    display: flex;
+    gap: 8px;
+}
+
+
+
 .c-form-field:focus-within .c-label {}
+
+.c-card__body p a{
+    display: flex;
+    justify-content: center;
+}
 
 /*
     Component: Button
@@ -499,6 +622,8 @@ a:focus {
 .u-color-neutral-dark {
     color: Black;
 }
+
+
 
 /*
     Utilities: spacing
