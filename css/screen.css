@@ -17,11 +17,24 @@
 \*------------------------------------*/
 
 :root {
+    --global-baseline: 8px; 
+    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
     --global-color-alpha-light: #4F95FF;
     --global-color-alpha: #3385FF;
     --global-color-alpha-dark: #2E77E6;
-    accent-color: #3385FF;
+
+    --input-border-width: 1px;
+    --input-line-heigth: 24px;
+    --input-padding: calc(((48px - var(--input-line-heigth))/2) - var(--input-border-width)) calc(2*var(--global-baseline)) ;
+
+    --card-body-padding: 48px;
+    --card-title-padding: 48px;
+    --card-footer-padding: 24px;
+
+    accent-color: var(--global-color-alpha);
 }
+
+
 
 /* CSS variables here */
 
@@ -64,6 +77,8 @@ html {
     color: white;
     text-shadow: none;
 }
+
+
 
 /*------------------------------------*\
 #Elements
@@ -165,7 +180,7 @@ hr {
 }
 
 a {
-    color: #3385FF ;
+    color: var(--global-color-alpha);
     transition: all .1s ease-in-out;
     text-decoration: none;
 }
@@ -196,12 +211,15 @@ input{
 */
 
 .o-row {
-    position: relative;
+    /* position: relative; */
     padding: 24px 24px 0;
+    display: flex;
 }
 
 .o-row--login {
     /* stuff here to align the card */
+    align-items: center;
+    height: 100vh;
 }
 
 /* size modifiers */
@@ -242,6 +260,7 @@ input{
     max-width: 79.5em;
     /* 79.5 * 16px = 1272 */
     width: 100%;
+    
 }
 
 /*
@@ -251,7 +270,9 @@ input{
 */
 
 .o-section {
-    position: relative;
+    /* position: relative; */
+    justify-content: center;
+    align-items: center;
 }
 
 .o-section+.o-section {
@@ -440,7 +461,7 @@ input{
 .c-button {
     color: white;
     font-weight: 700;
-    background-color: #3385FF;
+    background-color: var(--global-color-alpha);
     border: 1px solid #2E77E6;
     border-radius: 3px;
     line-height: 24px;
@@ -450,11 +471,11 @@ input{
 }
 
 .c-button:hover{
-    background-color: #4F95FF;
+    background-color: var(--global-color-alpha-light);
 }
 
 .c-button:focus{
-    /* background-color: #3385FF; */
+    
     box-shadow: 0 0 0 3px rgba(51, 133, 255, .3);
 }
 
@@ -485,7 +506,7 @@ input{
     fill: #20223A;
 }
 .c-logo__path--2{
-    fill: #3385FF;
+    fill: var(--global-color-alpha);
 }
 .c-logo__path--3{
     fill: #1B4186;
@@ -504,14 +525,14 @@ input{
 }
 
 .c-card__body {
-    padding: 48px ;
+    padding: var(--card-body-padding);
 }
 
 .c-card__title {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    padding: 48px 8px 0;
+    padding: var(--card-body-padding) 8px 0;
     font-size: 18px;
     font-weight: 700;
     color: #20223A;
@@ -524,7 +545,7 @@ input{
 }
 
 .c-card__footer > p{
-    padding: 24px 8px 0;
+    padding: var(--card-footer-padding) 8px 0;
     color: #757787;
 }
 
@@ -546,17 +567,18 @@ input{
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: 1px solid #e2e3e7;
+    border: var(--input-border-width) solid #e2e3e7;
     border-radius: 3px;   
     font-family: "Inter Web", sans-serif;
-    line-height: 24px;
-    padding: 11px 16px;
+    line-height: var(--input-line-heigth);
+    padding: var(--input-padding);
+    /* padding: 11px 16px; */
     outline: none;
 }
 
 .c-input:focus {
     box-shadow: 0 0 0 3px rgba(51, 133, 255, .3);
-    border-color: #3385FF;
+    border-color: var(--global-color-alpha);
 }
 
 /*
